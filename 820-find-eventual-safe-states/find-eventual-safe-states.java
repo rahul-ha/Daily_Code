@@ -9,10 +9,10 @@ class Solution {
         int[] in = new int[n];
 
         // build reverse graph 
-        for (int i = 0; i < n; i++) {
-            for (int v : graph[i]) {
-                rev.get(v).add(i);   // reverse edge
-                in[i]++;
+        for (int v1 = 0; v1 < n; v1++) {
+            for (int v2: graph[v1]) {
+                rev.get(v2).add(v1);   // reverse edge
+                in[v1]++;
             }
         }
         Queue<Integer> q = new LinkedList<>();
