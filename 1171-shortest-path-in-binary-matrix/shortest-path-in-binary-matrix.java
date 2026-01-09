@@ -19,12 +19,9 @@ class Solution {
             for(int d[]: dir){
                 int r = i+d[0];
                 int c = j+d[1];
-        if(r>=0 && c>=0 &&  r<n && c<n && grid[r][c]==0){
+        if(r>=0 && c>=0 &&  r<n && c<n && grid[r][c]==0 && !arr[r][c]){
             q.add(new int[]{r,c,cost+1});
-
-        }
-            }
-
+        }}
         }
         return -1;
     }
