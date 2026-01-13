@@ -9,14 +9,13 @@ class Solution {
             high = Math.max(high, row[1] + row[2]);
         }
 
-         while(high-low > 1e-6){ // it can save time acc to given condition
+         while(high-low > 1e-5){ // it can save time acc to given condition
             double mid = (low+high)/2;
             double c = cal(arr,mid);
             if(c>=total/2){
                 high = mid;
                 ans = mid;
             }
-
             else 
             low = mid;
          }
