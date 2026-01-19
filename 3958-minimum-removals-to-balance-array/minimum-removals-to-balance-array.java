@@ -1,5 +1,3 @@
-import java.util.*;
-
 class Solution {
     public int minRemoval(int[] nums, int k) {
         Arrays.sort(nums);
@@ -9,7 +7,7 @@ class Solution {
         int maxLen = 1;
 
         for (int j = 0; j < n; j++) {
-            while (i <= j && (long) nums[j] > (long) nums[i] * k) {
+            while (i <j && (long) nums[j] > (long) nums[i] * k) {
                 i++;
             }
             maxLen = Math.max(maxLen, j - i + 1);
