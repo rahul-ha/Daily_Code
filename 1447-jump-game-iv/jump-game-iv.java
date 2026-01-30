@@ -1,7 +1,7 @@
 class Solution {
     public int minJumps(int[] arr) {
         HashMap<Integer, ArrayList<Integer>> map = new HashMap<>();
-      //  if(arr.length==1) return 0;
+       if(arr.length==1) return 0;
         for(int i =0;i<arr.length;i++){
             if(!map.containsKey(arr[i])){
                 map.put(arr[i],new ArrayList<>());
