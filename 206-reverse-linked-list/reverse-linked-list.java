@@ -10,22 +10,17 @@
  */
 class Solution {
     public ListNode reverseList(ListNode head) {
-        ArrayList<Integer> al = new ArrayList<>();
-        if(head==null) return null;
-        ListNode temp = head;
-        while(temp!=null){
-            al.add(temp.val);
-            temp = temp.next;
-        }
-        Collections.reverse(al);
-        ListNode neww  = new ListNode(al.get(0));
-        ListNode nhead = neww;
 
-        for(int i =1;i<al.size();i++){
-            nhead.next  = new ListNode(al.get(i));
-            nhead = nhead.next;
+        ListNode prev = null;
+        ListNode curr = head;
 
+        while (curr != null) {
+            ListNode nextNode = curr.next; // save next
+            curr.next = prev;              // reverse link
+            prev = curr;                   // move prev
+            curr = nextNode;               // move curr
         }
-        return neww;
+
+        return prev;
     }
 }
