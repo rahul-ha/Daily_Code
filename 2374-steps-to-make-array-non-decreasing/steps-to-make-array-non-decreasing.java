@@ -1,31 +1,18 @@
 class Solution {
     public int totalSteps(int[] nums) {
-
-        int n = nums.length;
         int ans = 0;
-
-        // stack stores {value, steps}
         Deque<int[]> stack = new ArrayDeque<>();
+        for(int num : nums){
+            int step = 0;
+            while(!stack.isEmpty() && stack.peek()[0]<=num)
+            step = Math.max(step,stack.pop()[1]);
 
-        for (int num : nums) {
-            int steps = 0;
+            if(!stack.isEmpty()) step++;
+            else step = 0;
 
-            // pop all elements <= current
-            while (!stack.isEmpty() && stack.peek()[0] <= num) {
-                steps = Math.max(steps, stack.pop()[1]);
-            }
-
-            // if stack not empty, it means left bigger exists
-            if (!stack.isEmpty()) {
-                steps += 1;
-            } else {
-                steps = 0;
-            }
-
-            ans = Math.max(ans, steps);
-            stack.push(new int[]{num, steps});
+            ans = Math.max(ans,step);
+            stack.push(new int[]{num,step});
         }
-
         return ans;
     }
 }
