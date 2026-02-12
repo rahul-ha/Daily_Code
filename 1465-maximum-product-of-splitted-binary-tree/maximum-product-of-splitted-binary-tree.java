@@ -14,26 +14,27 @@
  * }
  */
 class Solution {
-    long  total = 0;
+    long total = 0;
     long ans = 0;
     public int maxProduct(TreeNode root) {
+        if(root==null) return 0;
         tsum(root);
         cal(root);
-        return (int)(ans% 1000000007);
+        return (int)(ans%1000000007);
     }
     public long tsum(TreeNode root){
         if(root==null) return 0;
         long a = tsum(root.left);
         long b = tsum(root.right);
-        total = root.val +a+b;
+        total = root.val+ a+b;
         return total;
     }
     public long cal(TreeNode root){
-        if(root == null) return 0;
-        long a  = cal(root.left);
+        if(root==null) return 0;
+        long a = cal(root.left);
         long b = cal(root.right);
-        long sub = root.val+ a+b;
-        ans = Math.max(ans, sub*(total-sub));
+        long sub = root.val + a+b;
+        ans = Math.max(ans,sub*(total-sub));
         return sub;
     }
 }
