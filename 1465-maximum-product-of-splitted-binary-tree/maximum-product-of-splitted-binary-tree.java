@@ -25,7 +25,7 @@ class Solution {
         if(root==null) return 0;
         long a = tsum(root.left);
         long b = tsum(root.right);
-        total += root.val;
+        total = root.val +a+b;
         return total;
     }
     public long cal(TreeNode root){
