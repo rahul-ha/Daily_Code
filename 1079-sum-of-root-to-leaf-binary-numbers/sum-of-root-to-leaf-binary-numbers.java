@@ -14,13 +14,29 @@
  * }
  */
 class Solution {
+
     public int sumRootToLeaf(TreeNode root) {
-        return cal(root,0);
+        List<String> list = new ArrayList<>();
+        dfs(root, "", list);
+
+        int sum = 0;
+        for (String s : list) {
+            sum += Integer.parseInt(s, 2);
+        }
+        return sum;
     }
-    public int cal(TreeNode root, int cur){
-        if(root==null) return 0;
-        if(root.left==null && root.right==null) 
-        return cur*2+ root.val;
-        return cal(root.left,cur*2+root.val) + cal(root.right,cur*2+root.val);
+
+    private void dfs(TreeNode node, String path, List<String> list) {
+        if (node == null) return;
+
+        // If leaf
+        if (node.left == null && node.right == null) {
+            list.add(path + node.val);  // directly append here
+            return;
+        }
+
+        // Directly append inside recursive call
+        dfs(node.left, path + node.val, list);
+        dfs(node.right, path + node.val, list);
     }
 }
