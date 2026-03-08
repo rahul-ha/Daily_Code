@@ -1,23 +1,15 @@
-import java.util.*;
-
 class Solution {
     public int eliminateMaximum(int[] dist, int[] speed) {
-
-        int n = dist.length;
-        int[] time = new int[n];
-
-        for(int i = 0; i < n; i++){
-            time[i] = (dist[i] + speed[i] - 1) / speed[i];
+        int time[] = new int[dist.length];
+        for(int i =0;i<dist.length;i++){
+            time[i] = (int)Math.ceil((double)dist[i]/speed[i]);
         }
-
+        int count = 1;
         Arrays.sort(time);
-
-        for(int minute = 0; minute < n; minute++){
-            if(time[minute] <= minute){
-                return minute;
-            }
+        for(int i =1;i<dist.length;i++){
+            if(time[i]-i<=0) break;
+            count++;
         }
-
-        return n;
+        return count;
     }
 }
