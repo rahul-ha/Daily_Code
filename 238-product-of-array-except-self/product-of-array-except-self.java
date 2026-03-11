@@ -12,7 +12,7 @@ class Solution {
         int ans[] = new int[nums.length];
         if(c==nums.length || c>=2) return ans;
       
-             if(b==0){
+             if(c>0){
                 for(int i =0;i<nums.length;i++){
                     if(nums[i]==0 ) ans[i] = a;
                     else ans[i] = 0;
