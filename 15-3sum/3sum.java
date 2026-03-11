@@ -1,39 +1,40 @@
 class Solution {
-    public List<List<Integer>> threeSum(int[] nums) {
-        Arrays.sort(nums);
+    public List<List<Integer>> threeSum(int[] arr) {
         List<List<Integer>> ans = new ArrayList<>();
-        for(int i =0;i<nums.length-2;i++){
+        Arrays.sort(arr);
+        int i = 0;
+        int j =0;
+        int k = arr.length-1;
+        while(i<arr.length-2){
             List<Integer> al = new ArrayList<>();
-            if((i>0 && nums[i]==nums[i-1] ))
-            continue;
-           //if(nums[i]>0) break;
-            int n = nums[i];
-            int tar = -n;
-            al.add(n);
-            cal(nums,i+1,nums.length-1,al,tar,ans);
+           if(i>0 && arr[i]==arr[i-1]) {
+    i++;
+    continue;
+}
+             al.add(arr[i]);
+            j = i+1;
+            check(j,k,al,arr,-arr[i],ans);
+            i++;
         }
         return ans;
     }
-    public void cal(int nums[],int i,int j,List<Integer> al,int tar,List<List<Integer>> ans){
-        while(i<j){
-            int a = nums[i];
-            int b = nums[j];
-            if(a+b>tar)
-            j--;
-            else if(a+b<tar)
-            i++;
-            else{
-                while(i<j && nums[i]==nums[i+1]) i++;
-                while(i<j && nums[j]==nums[j-1]) j--;
-                al.add(nums[i]);
-                al.add(nums[j]);
-                i++;
-                j--;
-                ans.add(new ArrayList<>(al));
-                al.remove(al.size()-1);
-                al.remove(al.size()-1);
-
-            }
-        }
+    public void check(int j,int k,List<Integer> al,int arr[],int tar,List<List<Integer>> ans){
+         int sum = 0;
+         while(j<k){
+            sum = arr[j] +arr[k];
+            if(sum==tar){
+          while(j<k && arr[j]==arr[j+1]) j++;
+           while(j<k && arr[k]==arr[k-1]) k--; 
+           al.add(arr[j]);
+           al.add(arr[k]);
+            ans.add(new ArrayList<>(al));
+           al.remove(al.size()-1);
+           al.remove(al.size()-1);
+           j++;
+           k--;
+           }
+          else if(sum>tar) k--;
+          else j++;
+         }
     }
 }
