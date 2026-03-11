@@ -7,10 +7,9 @@ class Solution {
         int k = arr.length-1;
         while(i<arr.length-2){
             List<Integer> al = new ArrayList<>();
-           if(i>0 && arr[i]==arr[i-1]) {
-    i++;
-    continue;
-}
+            while(i>0 && arr[i]==arr[i-1] && i<arr.length-2){
+                i++;
+            }
              al.add(arr[i]);
             j = i+1;
             check(j,k,al,arr,-arr[i],ans);
