@@ -28,7 +28,7 @@ class Solution {
                 if(a.right!=null) q.add(a.right);
                 al.add(a.val);
             }
-            ans.add(new ArrayList<>(al));
+            ans.add(al);
         }
         return ans;
     }
