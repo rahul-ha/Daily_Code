@@ -15,23 +15,18 @@
  */
 class Solution {
     public boolean isValidBST(TreeNode root) {
-        if(root==null) return true;
         ArrayList<Integer> al = new ArrayList<>();
-        check(root,al);
-        int a = al.get(0);
-        for(int i =1;i<al.size();i++){
-            if(a>=al.get(i)) return false;
-            else{
-                a = al.get(i);
-            }
+        check(root, al);
+        for(int i =0;i<al.size()-1;i++){
+            if(al.get(i)>=al.get(i+1)) return false;
         }
         return true;
     }
-public void check(TreeNode root, ArrayList<Integer>al){
-    if(root ==null) return ;
-     check(root.left,al);
-     al.add(root.val);
-    check(root.right,al);
+    public void check(TreeNode root , ArrayList<Integer> al){
+        if(root ==null) return;
+        check(root.left,al);
+        al.add(root.val);
+        check(root.right,al);
 
-}
+    }
 }
