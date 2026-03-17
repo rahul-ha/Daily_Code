@@ -25,7 +25,7 @@ class Solution {
                     for(String al : neg){
                         if(!visited.contains(al)){
                             q.add(al); 
-                            //set.remove(al);
+                           
                             } }
                            
             }
