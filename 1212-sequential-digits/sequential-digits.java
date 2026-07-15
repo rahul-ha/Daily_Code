@@ -1,25 +1,20 @@
 class Solution {
-        public List<Integer> sequentialDigits(int low, int high) {
+    public List<Integer> sequentialDigits(int low, int high) {
+        Queue<Integer> q = new LinkedList<>();
+        List<Integer> al = new ArrayList<>();
+        for(int i =1;i<=8;i++)
+        q.add(i);
+        while(!q.isEmpty()){
+            int a =  q.poll();
+            int b =  a%10;
+            if(b==9) continue;
+            int c = a*10 + b+1;
+            if( c<= high)
+            q.add(c);
+            if(c>=low && c<=high)
+            al.add(c);
 
-                    List<Integer> ans = new ArrayList<>();
-                            String s = "123456789";
-
-                                    int minLen = String.valueOf(low).length();
-                                            int maxLen = String.valueOf(high).length();
-
-                                                    for (int len = minLen; len <= maxLen; len++) {
-
-                                                                    for (int i = 0; i + len <= 9; i++) {
-
-                                                                                        int num = Integer.parseInt(s.substring(i, i + len));
-
-                                                                                                        if (num >= low && num <= high) {
-                                                                                                                                ans.add(num);
-                                                                                                        }
-                                                                    }
-                                                    }
-
-                                                            return ans;
         }
+        return al;
+    }
 }
-                                                                                                        
