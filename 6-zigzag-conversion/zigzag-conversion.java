@@ -3,7 +3,7 @@ class Solution {
         StringBuilder arr[] = new StringBuilder[n];
         int dir = 1;
         int row = 0;
-        if(n==1 || s.length()<=n) return s;
+        if(n==1 ) return s;
         for(int i =0;i<n;i++){
             arr[i] = new StringBuilder();
         }
