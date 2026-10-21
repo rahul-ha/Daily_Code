@@ -1,10 +1,6 @@
 class Solution {
     public boolean checkIfExist(int[] arr) {
-       ArrayList<Integer> al = new ArrayList<>();
-       for(int i =0;i<arr.length;i++){
-        al.add(arr[i]);
-       }
-       Collections.sort(al,Collections.reverseOrder());
+      
        for(int i =0;i<arr.length;i++){
         for(int j =i+1;j<arr.length;j++){
            if (arr[i] == 2 * arr[j] || arr[j] == 2 * arr[i]) 
